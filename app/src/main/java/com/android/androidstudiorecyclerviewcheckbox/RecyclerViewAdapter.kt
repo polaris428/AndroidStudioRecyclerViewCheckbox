@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.androidstudiorecyclerviewcheckbox.databinding.ItemBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RecyclerViewAdapter(var list: ArrayList<CheckboxData>) :
@@ -16,6 +18,10 @@ class RecyclerViewAdapter(var list: ArrayList<CheckboxData>) :
 
         return MyViewHolder(ItemBinding.bind(view))
 
+    }
+    fun swapData(fromPos: Int, toPos: Int) {
+        Collections.swap(list, fromPos, toPos)
+        notifyItemMoved(fromPos, toPos)
     }
 
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
